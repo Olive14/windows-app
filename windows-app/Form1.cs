@@ -17,6 +17,7 @@ namespace windows_app {
 		private const string ErrMsgInvalidParam = "数字を入力してください.";
 		private const string ErrMsgDividedByZero = "0で除算はできません.";
 		private const string ErrMsgUnexpectedOperation = "想定外の演算が実行されました.";
+		private const string ErrMsgOverflowOperand = "大きすぎまたは小さすぎる値が入力されました.";
 
 		public Form1() {
 			InitializeComponent();
@@ -71,8 +72,20 @@ namespace windows_app {
 		}
 
 		private string ExecCalc() {
-			int OperandNumber1 = Int32.Parse(Operand1);
-			int OperandNumber2 = Int32.Parse(Operand2);
+			int OperandNumber1;
+			int OperandNumber2;
+
+			try {
+				OperandNumber1 = Int32.Parse(Operand1);
+				OperandNumber2 = Int32.Parse(Operand2);
+			} catch(FormatException e) {
+				Console.WriteLine("Invalid operand. Operand1: {0}, Operand2: {1}", Operand1, Operand2);
+				return ErrMsgInvalidParam;
+			} catch(OverflowException e) {
+				Console.WriteLine("Overflow operand. Operand1: {0}, Operand2: {1}", Operand1, Operand2);
+				return ErrMsgOverflowOperand;
+			}
+
 			int Answer;
 
 			switch (SelectedOperatorIndex) {

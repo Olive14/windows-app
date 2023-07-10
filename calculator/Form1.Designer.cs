@@ -30,6 +30,12 @@ namespace windows_app {
 			this.ExecuteCalcBtn = new System.Windows.Forms.Button();
 			this.AnswerLabel = new System.Windows.Forms.Label();
 			this.OperatorComboBox = new System.Windows.Forms.ComboBox();
+			this.Base = new System.Windows.Forms.TextBox();
+			this.LabelOf = new System.Windows.Forms.Label();
+			this.Exponentiation = new System.Windows.Forms.TextBox();
+			this.LabelExponentiation = new System.Windows.Forms.Label();
+			this.ExecuteExponentiationBtn = new System.Windows.Forms.Button();
+			this.ExponentiationAnswer = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// TitleLabel
@@ -96,12 +102,75 @@ namespace windows_app {
 			this.OperatorComboBox.TabIndex = 7;
 			this.OperatorComboBox.SelectedIndexChanged += new System.EventHandler(this.OperatorComboBox_SelectedIndexChanged);
 			// 
+			// Base
+			// 
+			this.Base.BackColor = System.Drawing.SystemColors.Window;
+			this.Base.Location = new System.Drawing.Point(95, 306);
+			this.Base.Name = "Base";
+			this.Base.Size = new System.Drawing.Size(100, 23);
+			this.Base.TabIndex = 8;
+			this.Base.Text = "1";
+			this.Base.TextChanged += new System.EventHandler(this.Base_TextChanged);
+			// 
+			// LabelOf
+			// 
+			this.LabelOf.AutoSize = true;
+			this.LabelOf.Location = new System.Drawing.Point(220, 311);
+			this.LabelOf.Name = "LabelOf";
+			this.LabelOf.Size = new System.Drawing.Size(17, 15);
+			this.LabelOf.TabIndex = 9;
+			this.LabelOf.Text = "の";
+			this.LabelOf.Click += new System.EventHandler(this.LabelOf_Click);
+			// 
+			// Exponentiation
+			// 
+			this.Exponentiation.Location = new System.Drawing.Point(261, 306);
+			this.Exponentiation.Name = "Exponentiation";
+			this.Exponentiation.Size = new System.Drawing.Size(100, 23);
+			this.Exponentiation.TabIndex = 10;
+			this.Exponentiation.Text = "0";
+			this.Exponentiation.TextChanged += new System.EventHandler(this.Exponentiation_TextChanged);
+			// 
+			// LabelExponentiation
+			// 
+			this.LabelExponentiation.AutoSize = true;
+			this.LabelExponentiation.Location = new System.Drawing.Point(382, 311);
+			this.LabelExponentiation.Name = "LabelExponentiation";
+			this.LabelExponentiation.Size = new System.Drawing.Size(19, 15);
+			this.LabelExponentiation.TabIndex = 11;
+			this.LabelExponentiation.Text = "乗";
+			this.LabelExponentiation.Click += new System.EventHandler(this.LabelExponentiation_Click);
+			// 
+			// ExecuteExponentiationBtn
+			// 
+			this.ExecuteExponentiationBtn.Location = new System.Drawing.Point(435, 307);
+			this.ExecuteExponentiationBtn.Name = "ExecuteExponentiationBtn";
+			this.ExecuteExponentiationBtn.Size = new System.Drawing.Size(75, 23);
+			this.ExecuteExponentiationBtn.TabIndex = 12;
+			this.ExecuteExponentiationBtn.Text = " = ";
+			this.ExecuteExponentiationBtn.UseVisualStyleBackColor = true;
+			this.ExecuteExponentiationBtn.Click += new System.EventHandler(this.ExecuteExponentiationBtn_Click);
+			// 
+			// ExponentiationAnswer
+			// 
+			this.ExponentiationAnswer.AutoSize = true;
+			this.ExponentiationAnswer.Location = new System.Drawing.Point(548, 309);
+			this.ExponentiationAnswer.Name = "ExponentiationAnswer";
+			this.ExponentiationAnswer.Size = new System.Drawing.Size(0, 15);
+			this.ExponentiationAnswer.TabIndex = 13;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(800, 450);
+			this.Controls.Add(this.ExponentiationAnswer);
+			this.Controls.Add(this.ExecuteExponentiationBtn);
+			this.Controls.Add(this.LabelExponentiation);
+			this.Controls.Add(this.Exponentiation);
+			this.Controls.Add(this.LabelOf);
+			this.Controls.Add(this.Base);
 			this.Controls.Add(this.OperatorComboBox);
 			this.Controls.Add(this.AnswerLabel);
 			this.Controls.Add(this.ExecuteCalcBtn);
@@ -124,6 +193,12 @@ namespace windows_app {
 		private System.Windows.Forms.Button ExecuteCalcBtn;
 		private System.Windows.Forms.Label AnswerLabel;
 		private System.Windows.Forms.ComboBox OperatorComboBox;
+		private System.Windows.Forms.TextBox Base;
+		private System.Windows.Forms.Label LabelOf;
+		private System.Windows.Forms.TextBox Exponentiation;
+		private System.Windows.Forms.Label LabelExponentiation;
+		private System.Windows.Forms.Button ExecuteExponentiationBtn;
+		private System.Windows.Forms.Label ExponentiationAnswer;
 	}
 }
 

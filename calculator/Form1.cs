@@ -10,10 +10,16 @@ using System.Windows.Forms;
 
 namespace windows_app {
 	public partial class Form1 : Form {
+		//四則演算
 		private int SelectedOperatorIndex = 0;
 		private string Operand1 = "";
 		private string Operand2 = "";
 
+		//べき乗計算
+		private string BaseInput = "";
+		private string ExponentiationInput = "";
+
+		//エラーメッセージ
 		private const string ErrMsgInvalidParam = "数字を入力してください.";
 		private const string ErrMsgDividedByZero = "0で除算はできません.";
 		private const string ErrMsgUnexpectedOperation = "想定外の演算が実行されました.";
@@ -33,6 +39,9 @@ namespace windows_app {
 			// Do nothing...
 		}
 
+		/************
+		 * 四則演算 *
+		 ************/
 		//AnswerLabelがクリックされた
 		private void AnswerLabel_Click(object sender, EventArgs e) {
 			// Do nothing...
@@ -125,6 +134,45 @@ namespace windows_app {
 		//演算子右側の値を更新した
 		private void OperandText2_TextChanged(object sender, EventArgs e) {
 			Operand2 = OperandText2.Text;
+		}
+
+
+		/**************
+		 * べき乗計算 *
+		 **************/
+		//べき乗計算のベース部分
+		private void Base_TextChanged(object sender, EventArgs e) {
+			BaseInput = Base.Text;
+		}
+
+		private void LabelOf_Click(object sender, EventArgs e) {
+			//do nothing.
+		}
+
+		//べき乗計算の「何乗」の部分
+		private void Exponentiation_TextChanged(object sender, EventArgs e) {
+			ExponentiationInput = Exponentiation.Text;
+		}
+
+		private void LabelExponentiation_Click(object sender, EventArgs e) {
+			//do nothing.
+		}
+
+		//べき乗計算を実行する
+		private void ExecuteExponentiationBtn_Click(object sender, EventArgs e) {
+			//初期値から変更せずにべき乗計算ボタン押下時はBaseInputは空文字列。その場合はBase.Textから初期値を取得する。
+			int BaseNum = Int32.Parse(BaseInput=="" ? Base.Text : BaseInput);
+			//初期値から変更せずにべき乗計算ボタン押下時はExponentiationInputは空文字列。その場合はExponentiation.Textから初期値を取得する。
+			int ExponentiationNum = Int32.Parse(ExponentiationInput=="" ? Exponentiation.Text : ExponentiationInput);
+
+			int ExponentiationAns = 1;
+			if (ExponentiationNum >= 1) {
+				for (int i = 1; i <= ExponentiationNum; i++) {
+					ExponentiationAns *= BaseNum;
+				}
+			}
+
+			ExponentiationAnswer.Text = ExponentiationAns.ToString();
 		}
 	}
 
